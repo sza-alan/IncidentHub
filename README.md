@@ -1,76 +1,44 @@
 # IncidentHub
 
-Backend project built with **.NET 10** for incident management, external service health checks and local AI-assisted incident analysis.
+API para gerenciamento e análise de incidentes, desenvolvida em **.NET 10** como projeto de estudo e portfólio.
 
-The project was created as a practical study of backend architecture, resilient integrations, testing and AI-related concepts such as structured output, Tool Calling, MCP and retrieval.
+## Tecnologias
 
----
-
-## Features
-
-- Incident creation and management
-- Incident filtering and pagination
-- Incident status transitions
-- External service health checks
-- Resilient HTTP integrations
-- Local incident analysis using Ollama
-- Structured LLM responses
-- Tool Calling for service health checks
-- MCP Server with `stdio`
-- Local runbook retrieval
-- Unit and integration tests
-
----
-
-## Tech Stack
-
-### Backend
-
-- .NET 10
-- ASP.NET Core
-- C#
+- .NET 10 / ASP.NET Core
 - Entity Framework Core
 - SQLite
-- MediatR
-
-### AI
-
-- Ollama
-- qwen2.5:3b
-- Microsoft.Extensions.AI
-- Tool Calling
-- Model Context Protocol (MCP)
-- Local runbook retrieval
-
-### Testing
-
+- MediatR / CQRS
+- Clean Architecture
 - xUnit
-- Integration testing
-- Stubbed external dependencies
+- HttpClient + políticas de resiliência
+- Ollama com modelo local
+- Tool Calling
+- MCP
+- Retrieval com runbooks locais
 
-### Resilience
+## Funcionalidades
 
-- `IHttpClientFactory`
-- Retry
-- Timeout
-- Exponential backoff
-- Jitter
-- CancellationToken propagation
+- Cadastro e consulta de incidentes
+- Filtros e paginação
+- Alteração de status
+- Consulta de health de serviços externos
+- Retry e timeout em integrações HTTP
+- Análise de incidentes com LLM local
+- Tool Calling para consulta de health
+- MCP Server via `stdio`
+- Contexto adicional através de runbooks
+- Testes unitários e de integração
 
----
-
-## Architecture
-
-The solution follows a layered architecture inspired by Clean Architecture.
+## Estrutura
 
 ```text
-src
+src/
 ├── IncidentHub.Api
 ├── IncidentHub.Application
 ├── IncidentHub.Domain
 ├── IncidentHub.Infrastructure
 └── IncidentHub.Mcp
 
-tests
+tests/
 ├── IncidentHub.UnitTests
 └── IncidentHub.IntegrationTests
